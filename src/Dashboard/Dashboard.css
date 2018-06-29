@@ -1,0 +1,151 @@
+.floatingAddButton{
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+}
+
+#form-dialog-title{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #304cb2;
+    border-bottom: 3px solid #ffc63d;
+    margin-bottom: 15px;
+    color: #fff;
+    font-size: 30px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.dashboardContentContainer{
+    display: flex;
+    justify-content: center;
+    padding-top: 83px;
+    min-height: 100vh;
+}
+
+.flightsContainer{
+    margin: 0px 96px;
+    width: 100%;
+    min-height: calc( 100vh - 123px );
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.3);
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flightsContainer > h2{
+    padding: 40px 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #304cb2;
+    width: 100%;
+    font-size: 50px;
+    border-bottom: 3px solid #ffc63d;
+}
+
+.actualFlightContainer{
+    margin-top: 40px;
+    width: 80%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.flightTitle{
+    width: 100%;
+    background: #304cb2;
+    border-bottom: 3px solid #ffc63d;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.3);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.flightInfoContainer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 5px 10px 20px;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.3);
+    max-height: 200px;
+    opacity: 1;
+    transition: 0.3s all ease-in-out;
+    margin-bottom: 30px;
+}
+
+.closed{
+    max-height: 0px;
+    overflow: hidden;
+    padding: 0;
+    opacity: 0;
+    transition: 0.3s all ease-in-out;
+}
+
+.flightInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0px 0px 0px;
+}
+
+.flightInfo > h3{
+    width: 100%;
+    font-size: 12px;
+    color: rgba(0,0,0,0.8);
+    text-transform: uppercase;
+    padding: 0px 10px;
+    margin-bottom: 5px;
+}
+
+.centerizeP{
+    width: 95%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgba(0,0,0,0.3);
+}
+
+.centerizeP > p {
+    padding: 10px 5px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.iconWord{
+    display: flex;
+    align-items: center;
+}
+
+.checkedInStatusTrue{
+    background: rgba(1, 255, 1, 0.301);
+}
+
+.checkedInStatusFalse{
+    background: #ffc53d75;
+    /* background: rgba(255, 0, 0, 0.301); */
+}
+
+.errorMessage{
+    background: #ffc63d;
+    padding: 10px;
+    margin-top: -30px;
+    font-size: 20px;
+    border-top: 1px solid rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+}
