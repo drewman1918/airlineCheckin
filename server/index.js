@@ -109,8 +109,7 @@ app.delete('/api/flights/:flight_id', controller.deleteFlight)
 
 //Puppeteer Automation
 let checkIn = async (confirmationNumber, firstName, lastName, email, flight_id) => {
-    console.log('started job');
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
     const page = await browser.newPage();
 
     //Navigate to Southwest.com and Click on the Check-in button
@@ -165,7 +164,6 @@ let checkDatabase = new CronJob('00 * * * * *', () => {
     if (app.get('db')) {
         app.get('db').search_flights([now])
             .then(flights => {
-                console.log(flights);
                 if (flights[0]) {
                     flights.map(flight => {
                         const { confirmation_number, firstname, lastname, flight_id, email } = flight;
