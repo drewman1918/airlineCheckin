@@ -109,6 +109,7 @@ app.delete('/api/flights/:flight_id', controller.deleteFlight)
 
 //Puppeteer Automation
 let checkIn = async (confirmationNumber, firstName, lastName, email, flight_id) => {
+    console.log('started job');
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
@@ -161,10 +162,10 @@ let checkIn = async (confirmationNumber, firstName, lastName, email, flight_id) 
 let checkDatabase = new CronJob('00 * * * * *', () => {
 
     const now = moment.utc(new Date()).format();
-    console.log(now);
     if (app.get('db')) {
         app.get('db').search_flights([now])
             .then(flights => {
+                console.log(flights);
                 if (flights[0]) {
                     flights.map(flight => {
                         const { confirmation_number, firstname, lastname, flight_id, email } = flight;
