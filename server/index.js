@@ -161,7 +161,7 @@ let checkIn = async (confirmationNumber, firstName, lastName, email, flight_id) 
 let checkDatabase = new CronJob('00 * * * * *', () => {
 
     const now = moment.utc(new Date()).format();
-
+    console.log(now);
     if (app.get('db')) {
         app.get('db').search_flights([now])
             .then(flights => {
