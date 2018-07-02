@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import routes from './routes';
 import Heading from './Heading/Heading';
+import { withRouter } from "react-router-dom";
 import './App.css';
 
 class App extends Component {
   
   componentDidMount() {
-    axios.get('/auth/me').then( (res) => console.log(res.data))
+    axios.get('/auth/me').then((res) => {
+      this.props.history.push('/dashboard')
+  })
   }
   
   render() {
@@ -22,4 +25,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

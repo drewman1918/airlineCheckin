@@ -69,13 +69,22 @@ passport.deserializeUser((profile, done) => {
 
 //To set up perma-user
 app.use((req, res, next) => {
+    // req.user = {
+    //     email: 'bloomfield.andrew@gmail.com',
+    //     user_id: 1,
+    //     pro_user: true,
+    //     admin: true,
+    //     firstname: 'Andrew',
+    //     lastname: 'Bloomfield'
+    // }
+    // next()
     req.user = {
-        email: 'bloomfield.andrew@gmail.com',
-        user_id: 1,
+        email: 'test@user.com',
+        user_id: 2,
         pro_user: true,
         admin: true,
-        firstname: 'Andrew',
-        lastname: 'Bloomfield'
+        firstname: 'Test',
+        lastname: 'User'
     }
     next()
 })

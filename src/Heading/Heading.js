@@ -6,9 +6,9 @@ export default class Heading extends Component {
     render() {
         return (
             <div className="header">
-                <Button color = "default" variant = "outlined">Admin</Button>
+                {/* <Button color = "default" variant = "outlined">Admin</Button> */}
                 <h1>Southwest Check-In</h1>
-                <Button color="default" variant="outlined">Logout</Button>
+                {/* <Button color="default" variant="outlined">Logout</Button> */}
             </div>
         )
     }
