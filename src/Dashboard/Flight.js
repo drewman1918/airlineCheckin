@@ -142,21 +142,24 @@ export default class Flight extends Component{
                     <div className="flightInfo ">
                             <h3>Passenger Name</h3>
                         <div className= "centerizeP passengerName">
-                            <p>{firstname} {lastname}</p>
+                            {/* <p>{firstname} {lastname}</p> */}
+                            <p>Hidden</p>
                         </div>
                     </div>
 
                     <div className="flightInfo ">
                             <h3>Confirmation #</h3>
                         <div className="centerizeP confirmationNumber">
-                            <p>{confirmation_number}</p>
+                            {/* <p>{confirmation_number}</p> */}
+                            <p>Hidden</p>
                         </div>
                     </div>
                     
                     <div className="flightInfo">
                             <h3>Check-In Date</h3>
                         <div className="centerizeP checkInDate">
-                            <p>{formatted_check_in_date}<br /><span>{check_in_time}</span></p>
+                            {/* <p>{formatted_check_in_date}<br /><span>{check_in_time}</span></p> */}
+                            <p>Hidden</p>
                         </div>
                     </div>
 

@@ -115,6 +115,7 @@
     align-items: center;
     flex-direction: column;
     border: 1px solid rgba(0,0,0,0.3);
+    background: #E5E5E5;
 }
 
 .centerizeP > p {
@@ -137,7 +138,6 @@
 
 .checkedInStatusFalse{
     background: #ffc53d75;
-    /* background: rgba(255, 0, 0, 0.301); */
 }
 
 .errorMessage{
