@@ -6,6 +6,11 @@ import AirplaneIcon from '@material-ui/icons/AirplanemodeActive';
 import axios from 'axios';
 import './Dashboard.css';
 import Tooltip from '@material-ui/core/Tooltip';
+import Dialog from '@material-ui/core/Dialog';
+import TextField from '@material-ui/core/TextField';
+import { DialogContent } from '../../node_modules/@material-ui/core';
+import DialogActions from '@material-ui/core/DialogActions'
+import { Button } from '@material-ui/core'
 
 
 export default class Flight extends Component{
@@ -21,7 +26,9 @@ export default class Flight extends Component{
             checked_in: false,
             confirmation_number: '',
             error_message: null,
-            open: false
+            open: false,
+            deleteOpen: false,
+            password: ''
         }
     }
 
@@ -54,10 +61,31 @@ export default class Flight extends Component{
     }
 
     deleteFlight = () => {
-        axios.delete(`/api/flights/${this.props.flight_info.flight_id}`)
+        axios.delete(`/api/flights/${this.props.flight_info.flight_id}/${this.state.password}`)
             .then(() => {
                 this.props.getFlights();
+            }).catch((res) => {
+                alert(res)
             })
+    }
+
+    openDelete = () => {
+        this.setState({
+            deleteOpen: true
+        })
+    }
+
+    handleClose = () => {
+        this.setState({
+            deleteOpen: false,
+            password: ''
+        });
+    }
+
+    handlePassword = (e) => {
+        this.setState({
+            password: e.target.value
+        })
     }
     
     render() {
@@ -70,10 +98,43 @@ export default class Flight extends Component{
         return (
             <div>
 
-                <div onClick={this.handleOpen} className="flightTitle">
-                    <div className="iconWord"><AirplaneIcon style={{ marginRight: '5px' }} /><h3>{tripname}</h3></div>
-                    <div className="iconWord"><CalendarIcon style={{marginRight: '5px'}}/><h3>{formatted_departure_date}</h3></div>
-                    <Tooltip title="Delete Flight"><ClearIcon onClick={this.deleteFlight}/></Tooltip>
+                <Dialog
+                    open={this.state.deleteOpen}
+                    onClose={this.handleClose}
+                    aria-labelledby="alert-dialog-slide-title"
+                    keepMounted
+                    aria-describedby="alert-dialog-slide-description"
+                >
+                    <div id="form-dialog-title"><h3>Enter Password</h3></div>
+
+                    <DialogContent>
+                        <TextField
+                            autoFocus
+                            margin="dense"
+                            label="Password"
+                            type='password'
+                            fullWidth
+                            value={this.state.password}
+                            onChange={this.handlePassword}
+                            style={{ marginBottom: '15px' }}
+                        />
+                    </DialogContent>
+
+                    <DialogActions>
+                        <Button onClick={this.handleClose} color="primary">
+                            Cancel
+                        </Button>
+                        <Button onClick={this.deleteFlight} color="primary">
+                            Delete
+                        </Button>
+                    </DialogActions>
+                    
+                </Dialog>
+
+                <div className="flightTitle">
+                    <div className="iconWord" onClick={this.handleOpen}><AirplaneIcon style={{ marginRight: '5px' }} /><h3>{tripname}</h3></div>
+                    <div className="iconWord" onClick={this.handleOpen}><CalendarIcon style={{marginRight: '5px'}}/><h3>{formatted_departure_date}</h3></div>
+                    <Tooltip title="Delete Flight"><ClearIcon onClick={this.openDelete} /></Tooltip>
                 </div>
 
                 <div className= { (this.state.open) ? "flightInfoContainer" : "flightInfoContainer closed"} >

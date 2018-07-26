@@ -13,8 +13,12 @@ module.exports = {
     },
 
     deleteFlight: (req, res) => {
-        const { flight_id } = req.params;
-        req.app.get('db').delete_flight([flight_id])
-            .then( res.sendStatus(200))
+        const { flight_id, password } = req.params;
+        if (password === process.env.PASSWORD) {
+            req.app.get('db').delete_flight([flight_id])
+                .then( res.sendStatus(200))
+        } else {
+            res.status(401).send('Incorrect Password')
+        }
     }
 }

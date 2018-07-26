@@ -64,7 +64,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 0px 10px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     cursor: pointer;
@@ -127,6 +127,8 @@
 .iconWord{
     display: flex;
     align-items: center;
+    width: 100%;
+    padding: 10px 0px;
 }
 
 .checkedInStatusTrue{

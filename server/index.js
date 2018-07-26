@@ -105,7 +105,7 @@ app.get('/auth/me', (req, res, next) => {
 //Flight Calls
 app.post('/api/flights', controller.addFlight)
 app.get('/api/flights', controller.getUserFlights)
-app.delete('/api/flights/:flight_id', controller.deleteFlight)
+app.delete('/api/flights/:flight_id/:password', controller.deleteFlight)
 
 //Puppeteer Automation
 let checkIn = async (confirmationNumber, firstName, lastName, email, flight_id) => {

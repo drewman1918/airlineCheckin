@@ -29,7 +29,7 @@ export default class Dashboard extends Component {
             confirmation: '',
             firstname: '',
             lastname: '',
-            selectedDate: new Date(),
+            selectedDate: moment(),
             user_id: '',
             email: '',
             open: false,
