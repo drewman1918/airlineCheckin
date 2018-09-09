@@ -109,6 +109,7 @@ app.delete('/api/flights/:flight_id/:password', controller.deleteFlight)
 
 //Puppeteer Automation
 let checkIn = async (confirmationNumber, firstName, lastName, email, flight_id) => {
+    console.log(`Started check-in for: ${firstName} ${lastName} at ${moment()}`)
     const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
     const page = await browser.newPage();
 
