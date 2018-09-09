@@ -145,6 +145,9 @@ let checkIn = async (confirmationNumber, firstName, lastName, email, flight_id) 
         //If successfully logged in, click the log-in confirmation button
         await page.waitForSelector('#swa-content > div > div:nth-child(2) > div > section > div > div > div.air-check-in-review-results--confirmation > button');
         await page.click('#swa-content > div > div:nth-child(2) > div > section > div > div > div.air-check-in-review-results--confirmation > button');
+        
+        //Tell the DB we successfully checked them in (this way if the email fails, we still correctly notify that they were successfully checked in.)
+        await app.get('db').update_checked_in([flight_id])
 
         //Then click on the email button, enter your email, and submit the form.
         await page.waitForSelector('#swa-content > div > div:nth-child(2) > div > section > div > div > section > table > tbody > tr > td:nth-child(2) > button');
@@ -152,7 +155,7 @@ let checkIn = async (confirmationNumber, firstName, lastName, email, flight_id) 
         await page.waitForSelector('#emailBoardingPass');
         await page.type('#emailBoardingPass', email);
         await page.click('#form-mixin--submit-button');
-        await app.get('db').update_checked_in([flight_id]).then( () => browser.close())
+        await browser.close()
     }
 };
 
